@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint",
     "convex:dev": "convex dev",
-    "convex:deploy": "convex deploy"
+    "convex:deploy": "convex deploy",
+    "build:vercel": "convex deploy --cmd 'bun run build'"
   },
   "dependencies": {
     "convex": "^1.17.0",
