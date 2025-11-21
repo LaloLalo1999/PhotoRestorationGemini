@@ -60,7 +60,7 @@ This application uses **Gemini 3 Pro Image Preview (Nano Banana Pro Preview)** -
 4. Configure project settings:
    - **Framework Preset**: Next.js
    - **Root Directory**: Click **Edit** and select `apps/web`
-   - **Build Command**: `bunx convex deploy --cmd 'bun run build'`
+   - **Build Command**: Leave default (`turbo run build` or `next build`) - we configured `package.json` to handle this.
    - **Output Directory**: Leave default (`.next`)
    - **Install Command**: `bun install`
 5. Click **"Deploy"**

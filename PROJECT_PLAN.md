@@ -32,7 +32,7 @@ This document outlines the detailed plan to integrate Convex, Clerk, and Vercel 
     * **Framework Preset:** `Next.js`.
     * **Root Directory:** Click **Edit** and select `apps/web`.
 3. **Build Settings:**
-    * **Build Command:** `bunx convex deploy --cmd 'bun run build'` (This ensures Convex functions are deployed during the build).
+    * **Build Command:** Leave default. We updated `package.json` to run `convex deploy` automatically.
     * **Install Command:** `bun install`.
     * **Output Directory:** `.next` (Default).
 4. **Environment Variables:**
