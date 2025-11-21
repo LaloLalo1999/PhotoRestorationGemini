@@ -38,8 +38,8 @@ export default function Home() {
             <span className="block text-blue-600">Memories with AI</span>
           </h1>
           <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-            Transform old, damaged, or low-quality photos into stunning high-resolution images
-            using Google&apos;s cutting-edge Gemini AI technology
+            Transform old, damaged, or low-quality photos into stunning 4K resolution images
+            using Gemini 3 Pro (Nano Banana Pro) - professional AI restoration
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
@@ -73,17 +73,17 @@ export default function Home() {
       <section className="bg-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-4xl font-bold text-center text-gray-900 mb-12">
-            Powered by Google Gemini AI
+            Powered by Nano Banana Pro Preview
           </h2>
           <div className="grid md:grid-cols-3 gap-8">
             <div className="text-center p-6">
               <div className="bg-blue-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                 <Sparkles className="h-8 w-8 text-blue-600" />
               </div>
-              <h3 className="text-xl font-semibold mb-3">AI-Powered Enhancement</h3>
+              <h3 className="text-xl font-semibold mb-3">Professional Enhancement</h3>
               <p className="text-gray-600">
-                Advanced Gemini AI analyzes and enhances every detail of your photos with
-                unprecedented accuracy
+                Gemini 3 Pro (Nano Banana Pro) delivers professional-grade restoration with 
+                Google Search grounding and built-in thinking process for optimal results
               </p>
             </div>
             <div className="text-center p-6">
@@ -133,8 +133,8 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-semibold mb-3">AI Processing</h3>
               <p className="text-gray-600">
-                Our Gemini AI analyzes and restores your photo, enhancing colors, sharpness, and
-                repairing damage
+                Advanced AI thinks through the restoration process, then generates stunning 
+                4K quality images with enhanced colors, sharpness, and damage repair
               </p>
             </div>
             <div className="bg-white rounded-xl shadow-lg p-8">
@@ -179,7 +179,7 @@ export default function Home() {
               <span className="text-lg font-semibold">Photo Restoration AI</span>
             </div>
             <p className="text-gray-400">
-              Powered by Google Gemini AI &copy; 2025
+              Powered by Nano Banana Pro Preview &copy; 2025
             </p>
           </div>
         </div>

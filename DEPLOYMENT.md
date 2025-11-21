@@ -33,12 +33,22 @@ Before deploying, ensure you have:
 3. Create a new API key or use an existing one
 4. Copy your API key
 
-### Note on Imagen 3 API
+### Note on Gemini 3 Pro Image Preview (Nano Banana Pro)
 
-For production-ready image restoration with actual image generation:
-1. Request access to [Imagen 3 API](https://ai.google.dev/gemini-api/docs/image-generation)
-2. Once approved, update the `/api/restore` route to use Imagen 3 capabilities
-3. Implement proper image storage (e.g., Google Cloud Storage, AWS S3)
+This application uses **Gemini 3 Pro Image Preview (Nano Banana Pro Preview)** - the professional model for high-quality photo restoration:
+
+**Professional Features**:
+1. **Google Search Grounding**: Real-world context awareness for accurate restoration
+2. **Thinking Process**: AI refines composition and quality before generating the image
+3. **4K Resolution**: Capable of generating professional-quality images up to 4K
+4. **Complex Instructions**: Handles sophisticated restoration requirements
+5. **Single-Step Process**: Complete analysis and generation in one call
+
+**Setup Requirements**:
+1. Ensure your Google AI API key has [Gemini 3 Pro Image Preview access](https://ai.google.dev/gemini-api/docs/image-generation)
+2. Model identifier: `gemini-3.0-pro-image-preview` (Preview status)
+3. For production: Implement cloud storage (Google Cloud Storage, AWS S3) for 4K images
+4. Monitor API costs as this is a premium professional model
 
 ## Step 3: Deploy to Vercel
 

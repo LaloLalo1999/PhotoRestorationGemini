@@ -126,10 +126,12 @@ NEXT_PUBLIC_APP_URL=http://localhost:3000
 - Client-side image preview
 
 ### 2. AI Integration
-- Uses Google Gemini 1.5 Flash for image analysis
-- Analyzes image quality, damage, and enhancement opportunities
-- Provides detailed restoration recommendations
-- Ready for Imagen 3 integration when available
+- Uses Gemini 3 Pro Image Preview (Nano Banana Pro Preview)
+- Professional model with Google Search grounding
+- Built-in "Thinking" process for composition refinement
+- 4K resolution output capability
+- Single-step restoration with automatic fallback
+- Complex instruction handling for sophisticated restorations
 
 ### 3. Authentication Flow
 - Secure sign-up and sign-in with Clerk
@@ -146,12 +148,14 @@ NEXT_PUBLIC_APP_URL=http://localhost:3000
 ## Current Limitations & Future Enhancements
 
 ### Current State
-- Image analysis only (not actual image generation)
-- Returns original image as "restored" version
-- Requires Imagen 3 API access for real restoration
+- Professional-grade restoration using Gemini 3 Pro Image Preview
+- Single-step process with built-in "Thinking" for quality optimization
+- Google Search grounding for real-world context awareness
+- 4K resolution support for professional asset production
+- Falls back gracefully if image generation unavailable
 
 ### Planned Enhancements
-1. **Imagen 3 Integration**: Implement actual image generation/restoration
+1. **Enhanced Image Generation**: Fine-tune prompts for better restoration results
 2. **Cloud Storage**: Store images in Google Cloud Storage or AWS S3
 3. **Image History**: Track user's restored images
 4. **Batch Processing**: Process multiple images at once

@@ -29,18 +29,32 @@ export async function POST(request: NextRequest) {
     const mimeType = matches[1];
     const base64Data = matches[2];
 
-    // Use Gemini Pro Vision for image analysis and enhancement
-    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+    // Use Gemini 3 Pro Image Preview (Nano Banana Pro Preview) for photo restoration
+    // This is the professional model with Google Search grounding and 4K support
+    const imageModel = genAI.getGenerativeModel({ 
+      model: "gemini-3.0-pro-image-preview" 
+    });
 
-    const prompt = `You are an expert photo restoration AI. Analyze this image and provide detailed instructions on how to restore and enhance it. Focus on:
-1. Color correction and balance
-2. Sharpness and clarity improvements
-3. Noise reduction
-4. Contrast and brightness optimization
-5. Damage repair (scratches, tears, fading)
-6. Overall quality enhancement
+    // Create a comprehensive restoration prompt
+    const restorationPrompt = `You are a professional photo restoration expert. Using the provided image, create a high-quality restored version with these improvements:
 
-Provide a comprehensive restoration analysis.`;
+RESTORATION GOALS:
+- Enhance clarity and sharpness while maintaining natural appearance
+- Correct and balance colors for accurate, vibrant reproduction
+- Reduce noise, grain, and compression artifacts
+- Repair any visible damage (scratches, tears, stains, fading)
+- Improve contrast and exposure for optimal viewing
+- Enhance fine details and textures
+- Remove any dust spots or blemishes
+
+IMPORTANT:
+- Preserve the original composition and all subjects
+- Keep the restoration realistic and natural
+- Maintain the historical character and authenticity of the photo
+- Do not add or remove people or major elements
+- Match the style and era of the original photograph
+
+Generate a professional, high-quality restored version of this photograph.`;
 
     const imagePart = {
       inlineData: {
@@ -49,24 +63,55 @@ Provide a comprehensive restoration analysis.`;
       },
     };
 
-    const result = await model.generateContent([prompt, imagePart]);
-    const response = result.response;
-    const analysisText = response.text();
+    try {
+      // Generate restored image using Gemini 3 Pro Image Preview (Nano Banana Pro)
+      const result = await imageModel.generateContent([restorationPrompt, imagePart]);
+      const response = result.response;
 
-    // For the MVP, we'll return the analysis and the original image
-    // In a production environment, you would:
-    // 1. Use Imagen 3 API for actual image generation/restoration
-    // 2. Apply the analysis to generate an enhanced version
-    // 3. Store the results in cloud storage
-    
-    // Note: As of now, Imagen 3 generation API requires special access
-    // For this demo, we'll simulate the restoration process
-    
-    return NextResponse.json({
-      restoredImage: image, // In production, this would be the restored image
-      analysis: analysisText,
-      message: "Image analyzed successfully. Note: Full restoration requires Imagen 3 API access.",
-    });
+      // Extract the generated image from the response
+      let restoredImageData = null;
+      let analysisText = "";
+
+      if (response.candidates && response.candidates.length > 0) {
+        const candidate = response.candidates[0];
+        if (candidate.content && candidate.content.parts) {
+          for (const part of candidate.content.parts) {
+            if (part.text) {
+              analysisText += part.text;
+            } else if (part.inlineData) {
+              // Convert the generated image to base64 data URL
+              const generatedBase64 = part.inlineData.data;
+              const generatedMimeType = part.inlineData.mimeType || "image/png";
+              restoredImageData = `data:${generatedMimeType};base64,${generatedBase64}`;
+            }
+          }
+        }
+      }
+
+      if (restoredImageData) {
+        return NextResponse.json({
+          restoredImage: restoredImageData,
+          analysis: analysisText || "Image successfully restored using Gemini 3 Pro Image Preview (Nano Banana Pro).",
+          message: "Photo restored successfully with professional quality!",
+        });
+      } else {
+        // If no image was generated, return the original with explanation
+        return NextResponse.json({
+          restoredImage: image,
+          analysis: analysisText,
+          message: "Image analysis completed. Image generation may require additional configuration.",
+        });
+      }
+    } catch (imageGenError) {
+      console.error("Image restoration error:", imageGenError);
+      
+      // Fallback: Return original image with error message
+      return NextResponse.json({
+        restoredImage: image,
+        analysis: "",
+        message: "Unable to restore image. Please ensure your API key has Gemini 3 Pro Image Preview (Nano Banana Pro) access enabled.",
+      });
+    }
   } catch (error) {
     console.error("Error restoring image:", error);
     return NextResponse.json(

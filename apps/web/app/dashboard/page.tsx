@@ -95,7 +95,7 @@ export default function DashboardPage() {
             AI-Powered Photo Restoration
           </h2>
           <p className="text-xl text-gray-600">
-            Upload your old or low-quality photos and let Gemini AI restore them to their best quality
+            Upload your old or low-quality photos and let Nano Banana Pro restore them to professional 4K quality
           </p>
         </div>
 
@@ -222,9 +222,9 @@ export default function DashboardPage() {
               <div className="bg-blue-100 rounded-full w-12 h-12 flex items-center justify-center mb-4">
                 <span className="text-blue-600 font-bold text-xl">2</span>
               </div>
-              <h4 className="font-semibold text-lg mb-2">AI Enhancement</h4>
+              <h4 className="font-semibold text-lg mb-2">Professional Enhancement</h4>
               <p className="text-gray-600">
-                Google Gemini AI analyzes and enhances your photo
+                Nano Banana Pro thinks through and generates your restored photo
               </p>
             </div>
             <div>

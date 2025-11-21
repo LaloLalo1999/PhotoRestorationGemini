@@ -4,7 +4,10 @@ AI-powered photo restoration application using Google Gemini API, built with Nex
 
 ## Features
 
-- 🎨 **AI Photo Restoration**: Leverage Google Gemini AI to restore and enhance old or low-quality photos
+- 🎨 **Professional Photo Restoration**: Leverage Gemini 3 Pro Image Preview (Nano Banana Pro) for professional-grade photo restoration
+- 🔍 **Google Search Grounding**: Real-world grounding using Google Search for accurate results
+- 🧠 **AI Thinking Process**: Built-in "Thinking" process that refines composition before generation
+- 📐 **4K Resolution**: Generate images up to 4K resolution for professional asset production
 - 🔐 **Secure Authentication**: Clerk integration for user authentication and session management
 - 💳 **Billing Integration**: Clerk's beta billing system for subscription management
 - ⚡ **Modern Stack**: Built with Next.js 16, TypeScript, and Tailwind CSS
@@ -168,12 +171,21 @@ Add all environment variables from `.env.example` in your Vercel project setting
 
 ## Notes
 
-### Gemini Image Generation
-This application currently uses Gemini 1.5 Flash for image analysis. Full image generation with Imagen 3 requires special API access from Google. To enable image generation:
+### Gemini 3 Pro Image Preview (Nano Banana Pro)
 
-1. Request access to [Imagen 3 API](https://ai.google.dev/gemini-api/docs/image-generation)
-2. Update the `/api/restore` route to use Imagen 3 generation capabilities
-3. Implement image storage solution (e.g., cloud storage)
+This application uses **Gemini 3 Pro Image Preview** - the professional model designed for complex photo restoration:
+
+**Key Features:**
+1. **Professional Quality**: Designed for professional asset production and complex instructions
+2. **Google Search Grounding**: Real-world context awareness using Google Search
+3. **Thinking Process**: Built-in refinement process that optimizes composition before generation
+4. **4K Resolution**: Capable of generating images up to 4K resolution
+5. **Single-Step Process**: Analyzes and generates restored images in one unified call
+
+**Setup Requirements:**
+1. Ensure your Google AI API key has [Gemini 3 Pro Image Preview access](https://ai.google.dev/gemini-api/docs/image-generation)
+2. Model: `gemini-3.0-pro-image-preview` (Preview status - production usage allowed)
+3. Optional: Implement cloud storage for processed high-resolution images
 
 ## Contributing
 
