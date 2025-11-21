@@ -1,0 +1,72 @@
+# Example GitHub Actions workflow for OpenSpec validation
+# Copy this to .github/workflows/ to enable CI validation
+
+name: OpenSpec Validation
+
+on:
+  pull_request:
+    paths:
+      - 'openspec/**'
+  push:
+    branches:
+      - main
+    paths:
+      - 'openspec/**'
+
+jobs:
+  validate-specs:
+    name: Validate OpenSpec Documentation
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: latest
+      
+      - name: Install dependencies
+        run: |
+          cd openspec/tests
+          bun install
+      
+      - name: Run markdown linting
+        run: |
+          cd openspec/tests
+          bun run lint:md
+      
+      - name: Run validation tests
+        run: |
+          cd openspec/tests
+          bun test
+      
+      - name: Generate test report
+        if: always()
+        run: |
+          cd openspec/tests
+          bun test --reporter=json > test-results.json || true
+      
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: openspec-test-results
+          path: openspec/tests/test-results.json
+
+  check-completeness:
+    name: Check Task Completeness
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Check for unchecked tasks
+        run: |
+          if grep -r "\- \[ \]" openspec/changes/*/tasks.md; then
+            echo "::warning::Found unchecked tasks in task files"
+          else
+            echo "All tasks are checked!"
+          fi
