@@ -19,7 +19,7 @@ This document outlines the detailed plan to integrate Convex, Clerk, and Vercel 
 
 ### Convex Dashboard
 
-1. **Create Project:** Run `npx convex dev` locally to initialize the project. This will automatically create a project in the Convex dashboard.
+1. **Create Project:** Run `bunx convex dev` locally in `apps/web` to initialize the project. This will automatically create a project in the Convex dashboard.
 2. **Environment Variables:**
     * Go to **Settings** > **Environment Variables**.
     * Add `CLERK_ISSUER_URL` with the value from the Clerk JWT Template.
@@ -28,11 +28,15 @@ This document outlines the detailed plan to integrate Convex, Clerk, and Vercel 
 ### Vercel Dashboard
 
 1. **Import Project:** Import the repository from GitHub.
-2. **Build Settings:**
-    * **Build Command:** `npx convex deploy --cmd 'npm run build'` (This ensures Convex functions are deployed during the build).
-    * **Install Command:** `npm install` (Default).
-3. **Environment Variables:**
-    * `NEXT_PUBLIC_CONVEX_URL`: (Get this from your local `.env.local` after running `npx convex dev` or from Convex Dashboard).
+2. **Project Settings:**
+    * **Framework Preset:** `Next.js`.
+    * **Root Directory:** Click **Edit** and select `apps/web`.
+3. **Build Settings:**
+    * **Build Command:** `bunx convex deploy --cmd 'bun run build'` (This ensures Convex functions are deployed during the build).
+    * **Install Command:** `bun install`.
+    * **Output Directory:** `.next` (Default).
+4. **Environment Variables:**
+    * `NEXT_PUBLIC_CONVEX_URL`: (Get this from your local `.env.local` after running `bunx convex dev` or from Convex Dashboard).
     * `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY`: From Clerk.
     * `CLERK_SECRET_KEY`: From Clerk.
     * `CONVEX_DEPLOYMENT`: (Automatically set if you link Vercel to Convex, otherwise get it from Convex Dashboard).
@@ -51,21 +55,21 @@ This document outlines the detailed plan to integrate Convex, Clerk, and Vercel 
 * [ ] **Install Dependencies:**
 
     ```bash
-    npm install convex @clerk/nextjs
+    bun install
     ```
 
 * [ ] **Initialize Convex:**
 
     ```bash
-    npx convex dev
+    cd apps/web && bunx convex dev
     ```
 
-    (This creates the `convex/` folder and `.env.local`).
+    (This creates the `apps/web/convex/` folder and `.env.local`).
 
 ### Phase 2: Authentication (Convex + Clerk)
 
 * [ ] **Configure Convex Auth:**
-  * Create `convex/auth.config.ts`:
+  * Create `apps/web/convex/auth.config.ts`:
 
     ```typescript
     export default {
@@ -84,13 +88,13 @@ This document outlines the detailed plan to integrate Convex, Clerk, and Vercel 
 
 ### Phase 3: Database & Storage
 
-* [ ] **Define Schema (`convex/schema.ts`):**
+* [ ] **Define Schema (`apps/web/convex/schema.ts`):**
   * `users` table (clerkId, email, credits, etc.).
   * `images` table (storageId, userId, prompt, status, etc.).
 * [ ] **Create Functions:**
-  * `convex/users.ts`: `store` mutation to sync user from Clerk webhook.
-  * `convex/images.ts`: `generateUploadUrl`, `save`, `list` mutations.
-  * `convex/http.ts`: Webhook handler for Clerk events (user.created, etc.).
+  * `apps/web/convex/users.ts`: `store` mutation to sync user from Clerk webhook.
+  * `apps/web/convex/images.ts`: `generateUploadUrl`, `save`, `list` mutations.
+  * `apps/web/convex/http.ts`: Webhook handler for Clerk events (user.created, etc.).
 
 ### Phase 4: Frontend Integration
 

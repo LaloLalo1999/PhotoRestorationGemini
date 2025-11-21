@@ -29,7 +29,7 @@ AI-powered photo restoration application using Google Gemini API, built with Nex
 ### Prerequisites
 
 - Node.js 18.0.0 or higher
-- npm 10.2.5 or higher
+- Bun 1.0.0 or higher
 
 ### Installation
 
@@ -41,7 +41,7 @@ cd PhotoRestorationGemini
 
 2. Install dependencies:
 ```bash
-npm install
+bun install
 ```
 
 3. Set up environment variables:
@@ -88,7 +88,7 @@ NEXT_PUBLIC_APP_URL=http://localhost:3000
 Run the development server:
 
 ```bash
-npm run dev
+bun run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) in your browser.
@@ -98,7 +98,7 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 Build all apps and packages:
 
 ```bash
-npm run build
+bun run build
 ```
 
 ### Lint
@@ -106,7 +106,7 @@ npm run build
 Lint all apps and packages:
 
 ```bash
-npm run lint
+bun run lint
 ```
 
 ## Project Structure
@@ -120,6 +120,7 @@ PhotoRestorationGemini/
 │       │   ├── dashboard/   # Dashboard page
 │       │   ├── sign-in/     # Sign in page
 │       │   └── sign-up/     # Sign up page
+│       ├── convex/          # Convex backend functions
 │       └── middleware.ts    # Clerk middleware
 ├── packages/
 │   ├── ui/                  # Shared UI components
@@ -134,8 +135,9 @@ PhotoRestorationGemini/
 
 1. Push your code to GitHub
 2. Import your repository in [Vercel](https://vercel.com)
-3. Configure environment variables in Vercel dashboard
-4. Deploy!
+3. Set the **Root Directory** to `apps/web`
+4. Configure environment variables in Vercel dashboard
+5. Deploy!
 
 Vercel will automatically detect the Next.js app and configure the build settings.
 

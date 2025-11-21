@@ -5,8 +5,8 @@ Use this checklist before deploying to production.
 ## Pre-Deployment
 
 ### Code Quality
-- [x] Code builds successfully (`npm run build`)
-- [x] Linting passes (`npm run lint`)
+- [x] Code builds successfully (`bun run build`)
+- [x] Linting passes (`bun run lint`)
 - [x] TypeScript compilation succeeds
 - [x] No critical security vulnerabilities
 - [x] All files properly committed

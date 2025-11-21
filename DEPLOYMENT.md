@@ -57,11 +57,12 @@ This application uses **Gemini 3 Pro Image Preview (Nano Banana Pro Preview)** -
 1. Log in to [Vercel](https://vercel.com)
 2. Click **"New Project"**
 3. Import your GitHub repository
-4. Configure build settings:
+4. Configure project settings:
    - **Framework Preset**: Next.js
-   - **Root Directory**: Leave as `.` (monorepo detected automatically)
-   - **Build Command**: `npm run build` (or leave default)
-   - **Output Directory**: Leave default
+   - **Root Directory**: Click **Edit** and select `apps/web`
+   - **Build Command**: `bunx convex deploy --cmd 'bun run build'`
+   - **Output Directory**: Leave default (`.next`)
+   - **Install Command**: `bun install`
 5. Click **"Deploy"**
 
 ### Option B: Deploy via Vercel CLI
