@@ -16,7 +16,7 @@ This change provides the foundation for a production-ready photo restoration ser
 
 ## What Changes
 
-- **Database Schema**: Add `images` table to `convex/schema.ts` with user relationships and restoration metadata
+- **Database Schema**: Add `images` table to `apps/web/convex/schema.ts` with user relationships and restoration metadata
 - **Image Storage Functions**: Implement Convex mutations for secure file upload (`generateUploadUrl`, `save`) and query for listing images (`list`)
 - **AI Restoration Architecture**: Integrate Gemini API through a Convex action (preferred for backend consistency) with fallback considerations
 - **Frontend Components**: Add Upload and Gallery components with drag-and-drop support using `react-dropzone`

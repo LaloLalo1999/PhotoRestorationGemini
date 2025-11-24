@@ -198,11 +198,11 @@ images: {
 ## Migration Plan
 
 ### Phase 1: Add Database Schema
-1. Create `convex/schema.ts` with images table
-2. Run `npx convex dev` to apply schema
+1. Create `apps/web/convex/schema.ts` with images table
+2. Run `bunx convex dev` to apply schema
 
 ### Phase 2: Implement Storage Functions
-1. Create `convex/images.ts` with mutations and queries
+1. Create `apps/web/convex/images.ts` with mutations and queries
 2. Test with Convex dashboard
 
 ### Phase 3: Implement Restoration Action
