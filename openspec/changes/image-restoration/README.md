@@ -187,4 +187,34 @@ Before implementation begins:
 
 ---
 
+## Validation Tests
+
+This proposal includes comprehensive validation tests to ensure documentation quality and consistency.
+
+### Quick Validation
+
+Run the validation script from the proposal root:
+
+```bash
+./validate.sh
+```
+
+Or run directly from the tests directory:
+
+```bash
+cd tests
+node validate-standalone.js
+```
+
+### Test Coverage
+
+- **51 validation tests** covering all documents
+- Structure validation (file presence, organization)
+- Content completeness (required sections, statistics)
+- Cross-document consistency (requirement/scenario counts)
+- Markdown quality (formatting, code blocks, links)
+
+See [tests/README.md](tests/README.md) for complete documentation.
+
+
 **Note**: This is an OpenSpec proposal following the conventions defined in `openspec/AGENTS.md`. Do not begin implementation until this proposal is approved.
